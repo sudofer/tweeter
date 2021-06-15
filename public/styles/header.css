@@ -1,0 +1,33 @@
+.header {
+  height: 400px;
+  width: 100%;
+  background-color: #00b57f;
+background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.displayPic {
+  height: 178px;
+}
+
+.displayPic img {
+
+  height: 150px;
+  width: 150px;
+ 
+}
+
+.genericText {
+  color: white;
+  font-weight: 100;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.bold {
+  font-weight: bold;
+}

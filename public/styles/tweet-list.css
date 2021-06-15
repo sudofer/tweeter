@@ -1,0 +1,62 @@
+.tweetListArticle {
+  border: 5px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.tweetListArticle:hover {
+
+  box-shadow: 10px 10px black;
+
+  display: block;
+}
+
+.tweetListHeader {
+  display: flex;
+  flex-direction: row;
+justify-content: space-between;
+}
+
+.tweetListFooter {
+  border: none;
+  border-top: 5px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tweetListImage {
+  height: 50px;
+  width: 50px;
+
+}
+
+.tweetListName {
+flex-grow: 1;
+margin-left: 15px;
+}
+
+.tweetListTime {
+  display: flex;
+}
+
+.tweetListIcons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  
+
+  
+}
+
+.tweetListIcons i{
+
+  margin-right: 5px;
+
+}
+
+.fas {
+  color: #4056A1 !important
+}
