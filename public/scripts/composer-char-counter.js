@@ -5,6 +5,7 @@ $(document).ready(function(){
 
   $('#tweet-text').on('input', function(){
     
+   
     const length = this.value.length;
     
  
@@ -21,7 +22,7 @@ $(document).ready(function(){
 
 
 
-
+ 
 
 
 

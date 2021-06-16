@@ -4,15 +4,18 @@
   background-color: #00b57f;
 background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
 
-  border: 1px solid blue;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
 }
 
+
+
+
 .displayPic {
-  height: 178px;
+  height: 165px;
 }
 
 .displayPic img {
