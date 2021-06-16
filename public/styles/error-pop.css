@@ -1,0 +1,25 @@
+#errorPop {
+  margin-top: 5px;
+  padding: 5px;
+
+  display: flex;
+
+  border: 3px solid red;
+
+  color: #D8000C;
+  background-color: #FFD2D2;
+
+  border-radius: 5px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#errorPop .fas {
+  margin-right: 4px;
+}
+
+#hideMe {
+
+  display: none;
+}

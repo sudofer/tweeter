@@ -38,7 +38,6 @@ justify-content: space-between;
   background-color: transparent;
   resize: none;
   outline: none;
-  height: 45px;
 }
 
 .tweetForm {
@@ -52,7 +51,6 @@ justify-content: space-between;
 }
 
 .tweetText {
-
     line-height: 1.5;
     border-radius: 5px;
     border: none;
