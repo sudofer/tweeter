@@ -24,18 +24,24 @@ $(document).ready(()=> {
 
   const createTweetElement = tweet => {
 
+    const escape = function (str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
+
     const template = `<article class="tweetListArticle">
     <header class="tweetListHeader">
-      <img class="tweetListImage" src="${tweet.user.avatars}" alt="user_image">
+      <img class="tweetListImage" src="${escape(tweet.user.avatars)}" alt="user_image">
   
-      <p class="tweetListName">${tweet.user.name}</p>
-      <p>${tweet.user.handle}</p>
+      <p class="tweetListName">${escape(tweet.user.name)}</p>
+      <p>${escape(tweet.user.handle)}</p>
       
 
     </header>
-    <p>${tweet.content.text}</p>
+    <p>${escape(tweet.content.text)}</p>
     <footer class="tweetListFooter">
-      <p class="tweetListTime">${timeago.format(tweet.content.created_at)}</p>
+      <p class="tweetListTime">${escape(timeago.format(tweet.content.created_at))}</p>
       <div class="tweetListIcons"> 
         <i class="fas fa-flag"></i>
         <i class="fas fa-retweet"></i>
