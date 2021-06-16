@@ -6,31 +6,21 @@
 
 $(document).ready(()=> {
 
+  const loadTweets = () => {
+    $.ajax({
+      method: 'GET',
+      url: 'http://localhost:8080/tweets'
+    })
+    .done((res)=> {
+    
+          console.log(`success`)
+          renderTweets(res)
+
+    })
+    .fail((err) => console.log(`fail to get`, err))
+  }
   
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1623635661424
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1623722061424
-    }
-  ];
+  loadTweets();
 
   const createTweetElement = tweet => {
 
@@ -58,43 +48,51 @@ $(document).ready(()=> {
 
   }
   
-
-
-
   const renderTweets = arrayOfTweets => {
 
     arrayOfTweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
       //console.log($tweet);
-      $('.tweetList').append($tweet);
+      $('.tweetList').prepend($tweet);
       
     }) 
   }
-  renderTweets(data);
 
   $('.tweetForm').on('submit', (event) => {
     event.preventDefault();
-    console.log(`click`, event.target);
-    $.ajax({
-      method: "POST",
-      url: "http://localhost:8080/tweets", 
-      data: $(event.target).serialize(),
-    })
-    .done(()=>{
-      $('textarea').val("")
-      console.log(`done.`);
-      
-      
-      
-      renderTweets(data);
+    const val = $('.tweetText').val();
+    if (val.length === 0){
+      window.alert('error! no input')
+    }
+      else if (val.length > 140) {
+        window.alert('Your tweet is too long my friend')
+     
+    } else {
 
 
-    }) 
-    .fail((err)=> console.log(`Fail to post`, err))
-   
+      
+      
+      console.log(`click`, event.target);
+      $.ajax({
+        method: "POST",
+        url: "http://localhost:8080/tweets", 
+        data: $(event.target).serialize(),
+      })
+      .done(()=>{
+        $('textarea').val("")
+        console.log(`done.`);
+        loadTweets();
+      }) 
+      .fail((err)=> console.log(`Fail to post`, err))
+      
+    }
+    
 
   })
 
+  
+
+ 
 
 
 
