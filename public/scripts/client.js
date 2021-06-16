@@ -65,13 +65,40 @@ $(document).ready(()=> {
 
     arrayOfTweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
-      console.log($tweet);
+      //console.log($tweet);
       $('.tweetList').append($tweet);
       
     }) 
   }
-
-
   renderTweets(data);
+
+  $('.tweetForm').on('submit', (event) => {
+    event.preventDefault();
+    console.log(`click`, event.target);
+    $.ajax({
+      method: "POST",
+      url: "http://localhost:8080/tweets", 
+      data: $(event.target).serialize(),
+    })
+    .done(()=>{
+      $('textarea').val("")
+      console.log(`done.`);
+      
+      
+      
+      renderTweets(data);
+
+
+    }) 
+    .fail((err)=> console.log(`Fail to post`, err))
+   
+
+  })
+
+
+
+
+
+
 
 })
