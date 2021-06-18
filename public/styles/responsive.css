@@ -10,6 +10,7 @@
     
     .dropdown button {
       background: #34b68f;
+     
     }
 
     .dropdown {
@@ -22,6 +23,15 @@
 
 
   }
+  @media only screen and (max-width: 406px){
+    
+    .dropdown button {
+
+      margin-top: 6vh;
+
+    }
+  }
+
 
 
    /* Laptops / Desktops: minimum width of 1024px */
