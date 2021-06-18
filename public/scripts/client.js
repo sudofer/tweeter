@@ -5,6 +5,9 @@
  */
 
 $(document).ready(()=> {
+  $('.new-tweet').hide();
+
+  $("#hideMe").hide();
 
   const loadTweets = () => {
     $.ajax({
@@ -55,7 +58,7 @@ $(document).ready(()=> {
   }
   
   const renderTweets = arrayOfTweets => {
-
+    $('.tweetList').empty()
     arrayOfTweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
       //console.log($tweet);
@@ -64,20 +67,33 @@ $(document).ready(()=> {
     }) 
   }
 
+  $('#tweet-text').on('input', function (event) {
+    const val = $(this).val();
+    const error = $("#hideMe");
+  const errorMsg = $("#error"); 
+
+   if (val.length > 140) {
+      errorMsg.text('Too many characters.')
+      error.slideDown('slow')
+  } else {
+    error.hide();
+  
+
+  }})
   $('.tweetForm').on('submit', (event) => {
     event.preventDefault();
+    const errorMsg = $("#error"); 
+    const error = $("#hideMe")
     const val = $('.tweetText').val();
     if (val.length === 0){
-      window.alert('error! no input')
+      errorMsg.text('Cannot tweet an empty tweet.');
+      error.slideDown('slow');
     }
       else if (val.length > 140) {
-        window.alert('Your tweet is too long my friend')
-     
+        errorMsg.text('Too many characters.')
+        error.slideDown('fast');
     } else {
-
-
-      
-      
+      error.hide();
       console.log(`click`, event.target);
       $.ajax({
         method: "POST",
@@ -93,16 +109,55 @@ $(document).ready(()=> {
       
     }
     
+    
 
   })
 
   
 
- 
+  $('.dropdown').on('click', () => {
+
+    const newTweet = $('.new-tweet');
+
+    if (newTweet.is(":hidden")){
+     newTweet.slideDown('slow');
+     newTweet.find("textarea").focus();
+    } else {
+      newTweet.slideUp('slow');
+    }
 
 
+  })
+  
+  const $myBtn = $('#myBtn');
+
+  $myBtn.on('click', () => {
+
+    topFunction();
+
+  })
+  //Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
 
 
 
 
 })
+

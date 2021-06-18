@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
 
@@ -21,6 +22,8 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweet-list.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/error-pop.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/responsive.css" type="text/css" />
     
 
 
@@ -43,6 +46,7 @@
           <i class="fas fa-angle-double-down"></i> 
       </div>
     </nav>
+    <div class="responce">
     <header class="header">
       <div class ='displayPic'>
         <img src="/images/profile-hex.png"> 
@@ -55,11 +59,16 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <!----------------error popup------->
+     <div id="hideMe">
+      <label id="errorPop"> <i class="fas fa-exclamation-triangle"></i> 
+      <p id="error"></p></label>
+    </div>
 <!----------------------new tweet---------------->
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form class="tweetForm">
-          <textarea class='tweetText' name="text" placeholder="What are you humming about?" id="tweet-text"></textarea>
+          <textarea rows = "1" class='tweetText' name="text" placeholder="What are you humming about?" id="tweet-text"></textarea>
           <div class="tweetButton">
             <button id="tweetButton" type="submit">Tweet</button>
             <output id="counter" name="counter" class="counter" for="tweet-text">140</output>
@@ -70,7 +79,11 @@
       <section class="tweetList">
       </section>
   </main>
-
+</div>
+<div onclick="topFunction()" id="myBtn">
+  <i class="fas fa-arrow-circle-up"></i>
+  
+</div>
   </body>
 
 

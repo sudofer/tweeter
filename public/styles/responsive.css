@@ -1,0 +1,74 @@
+  /* Smartphones: minimum width of 320px to maximum width of around 420px */
+  @media only screen and (max-width: 768px) {
+    /* Write smartphone only styles here */
+    .navBar {
+      background-color: #34b68f;
+      
+      
+    }
+
+    
+    .dropdown button {
+      background: #34b68f;
+    }
+
+    .dropdown {
+      margin: 4px !important;
+    }
+
+    .tweetList {
+      width: 95vw;
+    }
+
+
+  }
+
+
+   /* Laptops / Desktops: minimum width of 1024px */
+   @media only screen and (min-width: 1025px) {
+    
+    .dropdown button {
+      background-color: #4056A1;
+    }
+    .navBar {
+      background-color: #4056A1;
+    }
+
+    .responce {
+      display: flex;
+    }
+
+    .header {
+      margin-top: 8em;
+      width: 35%;
+      height: 45%;
+      margin-left: 2em;
+      position: fixed;
+      margin-right: 10em;
+      flex-direction: column-reverse;
+    }
+
+    .container {
+      width: 50vw;
+      margin-top: 5em;
+      margin-right: 2em;
+    
+    }
+     
+    .container h2 {
+      font-size: 1vw;
+    }
+    
+    .header img {
+      
+      width: 16vw;
+      height: 16vw;
+    }
+
+    .tweetList {
+      width: 100%;
+
+    }
+
+
+  }

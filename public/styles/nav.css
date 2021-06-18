@@ -1,6 +1,6 @@
 .navBar {
 
-  position: fixed;
+  
   top: 0px;
 }
 
@@ -20,7 +20,7 @@ nav {
 
 nav, #logo {
   font-family: 'Bungee', sans-serif;
-  font-size: xx-large;
+  font-size: 32px;
 }
 
 nav, button {
