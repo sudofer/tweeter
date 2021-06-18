@@ -19,3 +19,8 @@ This repository is the starter code for the project: Students will fork and clon
 - md5
 - timeago.js
 
+## Screenshots
+
+!["Screenshot of mobile view"](https://github.com/sudofer/tweeter/blob/master/docs/mobile.png?raw=true)
+!["Screenshot of tablet view"](https://github.com/sudofer/tweeter/blob/master/docs/tablet.png?raw=true)
+!["Screenshot of desktop view"](https://github.com/sudofer/tweeter/blob/master/docs/desktop.png?raw=true)
