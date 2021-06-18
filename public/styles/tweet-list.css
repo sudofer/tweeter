@@ -47,14 +47,15 @@ margin-left: 15px;
   justify-content: flex-end;
   margin-top: 20px;
   
-
-  
 }
 
 .tweetListIcons i{
-
   margin-right: 5px;
 
+}
+
+.tweetListIcons .fas:hover {
+  color: #00b57f !important;
 }
 
 .tweetListIcons .fas {
