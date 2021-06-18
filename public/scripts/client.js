@@ -9,16 +9,13 @@ $(document).ready(()=> {
   $('.new-tweet').hide();
   $("#hideMe").hide();
   
-
   const loadTweets = () => {
     $.ajax({
       method: 'GET',
       url: 'http://localhost:8080/tweets'
     })
-    .done((res)=> {
-    
-          
-          renderTweets(res)
+    .done((res)=> {    
+      renderTweets(res)
 
     })
     .fail((err) => console.log(`fail to get`, err))
@@ -34,14 +31,12 @@ $(document).ready(()=> {
       return div.innerHTML;
     };
 
-    const template = `<article class="tweetListArticle">
+    const template = 
+    `<article class="tweetListArticle">
     <header class="tweetListHeader">
       <img class="tweetListImage" src="${escape(tweet.user.avatars)}" alt="user_image">
-  
       <p class="tweetListName">${escape(tweet.user.name)}</p>
       <p>${escape(tweet.user.handle)}</p>
-      
-
     </header>
     <p>${escape(tweet.content.text)}</p>
     <footer class="tweetListFooter">
@@ -55,7 +50,6 @@ $(document).ready(()=> {
  </article> `
 
     return template;
-
   }
 
   const renderTweets = arrayOfTweets => {
@@ -64,24 +58,19 @@ $(document).ready(()=> {
              // make use of our tweets and html template by rendering an article for each tweet
     arrayOfTweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
-      
       $('.tweetList').prepend($tweet);
-      
     }) 
   }
             //watch user input for errors
   $('#tweet-text').on('input', function (event) {
     const val = $(this).val();
     const error = $("#hideMe");
-  const errorMsg = $("#error"); 
+    const errorMsg = $("#error"); 
 
-   if (val.length > 140) {
+    if (val.length > 140) {
       errorMsg.text('Too many characters.')
       error.slideDown('slow')
-  } else {
-    error.hide();
-  
-
+    } else { error.hide();
   }}) 
           // TWEET!!!!
   $('.tweetForm').on('submit', (event) => {
@@ -114,35 +103,23 @@ $(document).ready(()=> {
         loadTweets();
       }) 
       .fail((err)=> console.log(`Fail to post`, err))
-      
     }
-    
-    
-
   })
 
-  
-
   $('.dropdown').on('click', () => {
-
     const newTweet = $('.new-tweet');
     // hide error if it's not already hidden
-    if (!$('#errorPop').is(':hidden')){
+    if (!$('#errorPop').is(':hidden')) {
       $('#errorPop').hide();
     }
 
 
-    if (newTweet.is(":hidden")){
+    if (newTweet.is(":hidden")) {
      newTweet.slideDown('slow');
      newTweet.find("textarea").focus();
     } else {
       newTweet.slideUp('slow');
     }
-
-
   })
-  
-
-
 })
 
