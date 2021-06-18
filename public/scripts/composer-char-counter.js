@@ -2,7 +2,7 @@
 
 
 $(document).ready(function(){
-
+  // counter logic
   $('#tweet-text').on('input', function(){
     
    
@@ -18,7 +18,7 @@ $(document).ready(function(){
   })
 
 
-
+// stretch button (scroll to top of page)
 
   const $myBtn = $('#myBtn');
 
@@ -27,6 +27,8 @@ $(document).ready(function(){
     topFunction();
 
   })
+
+  //   I HARDLY UNDERSTAND THIS BIT...COPIED FROM GOOGLE. FULL DISCLOSURE. (IT'S JUST A STRETH....)
   //Get the button:
 mybutton = document.getElementById("myBtn");
 

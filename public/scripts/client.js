@@ -5,9 +5,10 @@
  */
 
 $(document).ready(()=> {
+  // hide elements that need to be hidden 
   $('.new-tweet').hide();
-
   $("#hideMe").hide();
+  
 
   const loadTweets = () => {
     $.ajax({
@@ -16,17 +17,17 @@ $(document).ready(()=> {
     })
     .done((res)=> {
     
-          console.log(`success`)
+          
           renderTweets(res)
 
     })
     .fail((err) => console.log(`fail to get`, err))
   }
-  
+              // async call for tweets
   loadTweets();
-
+              // generate html articles from tweets
   const createTweetElement = tweet => {
-
+              // sanitize user input 
     const escape = function (str) {
       let div = document.createElement("div");
       div.appendChild(document.createTextNode(str));
@@ -56,17 +57,19 @@ $(document).ready(()=> {
     return template;
 
   }
-  
+
   const renderTweets = arrayOfTweets => {
+            //clear current generated articles to prevent duplicates
     $('.tweetList').empty()
+             // make use of our tweets and html template by rendering an article for each tweet
     arrayOfTweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
-      //console.log($tweet);
+      
       $('.tweetList').prepend($tweet);
       
     }) 
   }
-
+            //watch user input for errors
   $('#tweet-text').on('input', function (event) {
     const val = $(this).val();
     const error = $("#hideMe");
@@ -79,30 +82,35 @@ $(document).ready(()=> {
     error.hide();
   
 
-  }})
+  }}) 
+          // TWEET!!!!
   $('.tweetForm').on('submit', (event) => {
     event.preventDefault();
     const errorMsg = $("#error"); 
     const error = $("#hideMe")
     const val = $('.tweetText').val();
+              //prevent empty input
     if (val.length === 0){
       errorMsg.text('Cannot tweet an empty tweet.');
       error.slideDown('slow');
-    }
+    }         //prevent lengthy input
       else if (val.length > 140) {
         errorMsg.text('Too many characters.')
-        error.slideDown('fast');
+        error.slideDown('slow');
     } else {
       error.hide();
-      console.log(`click`, event.target);
+      
       $.ajax({
         method: "POST",
         url: "http://localhost:8080/tweets", 
         data: $(event.target).serialize(),
       })
       .done(()=>{
+        //reset tweetbox variables
         $('textarea').val("")
-        console.log(`done.`);
+        const counter = $('#counter');
+        counter[0].innerHTML = 140
+        //display newest tweet at the top of the page
         loadTweets();
       }) 
       .fail((err)=> console.log(`Fail to post`, err))
@@ -118,6 +126,11 @@ $(document).ready(()=> {
   $('.dropdown').on('click', () => {
 
     const newTweet = $('.new-tweet');
+    // hide error if it's not already hidden
+    if (!$('#errorPop').is(':hidden')){
+      $('#errorPop').hide();
+    }
+
 
     if (newTweet.is(":hidden")){
      newTweet.slideDown('slow');
@@ -129,34 +142,6 @@ $(document).ready(()=> {
 
   })
   
-  const $myBtn = $('#myBtn');
-
-  $myBtn.on('click', () => {
-
-    topFunction();
-
-  })
-  //Get the button:
-mybutton = document.getElementById("myBtn");
-
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
-
-
 
 
 })
